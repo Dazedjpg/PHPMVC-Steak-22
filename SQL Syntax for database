@@ -1,0 +1,27 @@
+CREATE DATABASE steak22_db;
+USE steak22_db;
+
+CREATE TABLE kategori (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama_kategori VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE menu (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama_menu VARCHAR(100) NOT NULL,
+    kategori_id INT,
+    harga DECIMAL(10,2) NOT NULL,
+    deskripsi TEXT,
+    FOREIGN KEY (kategori_id) REFERENCES kategori(id)
+);
+
+-- Insert sample data
+INSERT INTO kategori (id, nama_kategori) VALUES
+(1, 'makanan'),
+(2, 'minuman');
+
+INSERT INTO menu (nama_menu, kategori_id, harga, deskripsi) VALUES
+('Prime Tenderloin', 1, 119000, 'Daging sapi tanpa lemak dengan tekstur paling lembut dan empuk'),
+('Prime Sirloin', 1, 93000, 'Daging sapi dengan lemak di pinggir, tekstur lembut dan cita rasa yang gurih'),
+('Prime Rib Eye', 1, 97000, 'Tekstur lembut dengan sedikit lemak ditengah memberikan sensasi gurih yang wajib dicoba kelezatannya'),
+('Teh Tawar Ice/Hot', 2, 21000, 'refill');
